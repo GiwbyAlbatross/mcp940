@@ -3,6 +3,7 @@ don't release the resulting files as it is a copyright issue according to https:
 
 import json
 import pathlib
+import shutil
 
 MC_VERSION = '1.12'
 
@@ -16,7 +17,13 @@ def main(argv) -> int:
     mappings = json.load(mapping_file)['objects']
     for file in mappings:
         file_id = mappings[file]['hash']
-        hashdir = pathlib.Path(objects_folder, file_id[:2])
+        hashdir = objects_folder / file_id[:2]
+        fileloc = hashdir / file_id
+        endpath = result_folder / file
+        end_dir = endpath.parents[0]
+
+        end_dir.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(fileloc, endpath)
 
 if __name__ == '__main__':
     import sys
