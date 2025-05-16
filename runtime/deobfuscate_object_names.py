@@ -18,11 +18,12 @@ logfile = open(pathlib.Path("logs", "deobfuscate_assets.log"), 'w')
 
 def log(*args, **kwargs):
     kwargs['file'] = logfile
+    kwargs['flush']= True
     print(f"[{time.time()-start_time}]", *args, **kwargs)
 
 def main(argv) -> int:
-    log("Reading index file:", str(indexes_folder / MC_VERSION+'.json'))
-    mapping_file = open(indexes_folder / MC_VERSION+'.json')
+    log("Reading index file:", str(indexes_folder / (MC_VERSION+'.json')))
+    mapping_file = open(indexes_folder / (MC_VERSION+'.json'))
     mappings = json.load(mapping_file)['objects']
     for file in mappings:
         file_id = mappings[file]['hash']
@@ -33,7 +34,7 @@ def main(argv) -> int:
         log("Putting file", file, "in", end_dir, "from hash:", file_id)
         end_dir.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(fileloc, endpath)
-    log.close()
+    logfile.close()
 
 if __name__ == '__main__':
     import sys
