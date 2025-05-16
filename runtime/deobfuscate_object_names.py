@@ -24,7 +24,6 @@ def main(argv) -> int:
 
         end_dir.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(fileloc, endpath)
-        
 
 if __name__ == '__main__':
     import sys
