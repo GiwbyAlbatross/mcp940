@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ deobfuscate the contents of jars/objects which is mostly the music and sound effects (program by Giwby Albatross)
-don't release the resulting files as it is a copyright issue according to https://github.com/WangTingZheng/mcp940/issues/2#issuecomment-2883062912 """
+don't release the resulting files as it is a copyright issue according to https://github.com/WangTingZheng/mcp940/issues/2#issuecomment-2883062912 
+I AM NOT RESPONSIBLE FOR COPYRIGHT PROBLEMS IF YOU RELEASE THE DEOBFUSCATED FILES """
 
 import json
 import time
